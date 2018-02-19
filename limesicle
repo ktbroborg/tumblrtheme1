@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="shortcut icon" href="{Favicon}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" 
+        href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+<!--
+function handleThis(formElm)
+{
+window.location="/tagged/"+formElm.number.value+"";
+return false;
+}
+-->
+</script>
+    
+    <meta name="color:Sidebar Background Color" content="#FF9680">
+    <meta name="image:Sidebar Background Image" content="">
+    <meta name="color:Description Color" content="#cccccc">
+    <meta name="color:Sidebar Link Hover Color" content="#000000">
+    
+    <meta name="color:Link Color" content="#cd28879">
+    <meta name="color:Link Hover Color" content="#14C1BF">
+    
+    <meta name="font:Post Font" content="Helvetica Neue, Arial, sans-serif">
+    <meta name="color:Post Font Color" content="#747474">
+    
+
+    <meta name="color:Background Color" content="#d28879">
+    <meta name="color:Post Background Color" content="#FFEAE5">
+    <meta name="color:Post Hover Color" content="#FF9680">
+    
+    <meta name="color:Pagination Font Color" content="#FFEAE5">
+    
+    <meta name="color:Permalink Navbar Background" content="#FF9680">
+    
+    <style>
+    *, *:hover {
+        transition: all 0.7s ease-in-out;
+        box-sizing: border-box;
+        
+        font-family: {TitleFont}, sans-serif;
+    }
+    
+    figure.tmblr-full >*, figure >* {
+        display: block;
+        margin: auto;
+        width: 80%;
+        height: auto;
+    }
+    
+    body {
+        padding: 0px;
+        margin: 0px;
+        
+        text-align: justify;
+        font-family: sans-serif;
+        
+        background: {color:Background Color};
+        font-size: 1em;
+    }
+    
+    h1 {
+     font-size: 1.5em;      
+     font-weight: {TitleFontWeight};
+    }
+    
+    h1 >* {
+        transition: all 0.3s ease-in-out!important;
+    }
+    
+    @media screen and (max-width: 600px) {
+    #profile h1 {
+    	font-size: {select:Title font size mobile};
+        }
+
+    
+    #sidebar, #sidebar-background{
+        width: 200px;
+    }
+    }
+
+    h2 {
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
+        font-weight: {TitleFontWeight};
+        color: {color:Link Color};
+    }
+    
+    h3 {
+        padding: 5px;
+        margin: 5px;
+        text-align: center;
+        font-weight: {TitleFontWeight};
+    }
+    
+    p {
+        padding: 2px;
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        
+        word-wrap: word-break;
+        color: {color:Post Font Color};
+    }
+    
+    a {
+        text-decoration: none;
+        color: {color:Link Color};
+    }
+    
+    a:hover{
+        color: {color:Link Hover Color} !important;
+    }
+    
+    ul, li {
+        list-style-type: none;
+    }
+
+    
+    hr{
+        display: block;
+        display: flex;
+        height: 1px;
+        width: 80%;
+        
+        border: 0;
+        background: white;
+        background: -webkit-gradient(
+            linear, 0 0, 100% 0, 
+            from(transparent), to(transparent), color-stop(50%, white)
+            );
+    }
+    
+    #main { 
+        height: 100vh; width: 100vw;
+        display: block;
+        display: flex;
+        
+        overflow: auto;
+        background: {color:Background Color};
+    }
+    
+    #main div {
+        padding: 0;
+    }
+    
+    /* fixed sidebar formatting */
+    #sidebar {
+        flex: ;
+        height:100vh; width:25vw;
+        min-width: 200px;
+        margin: 0px;
+        position: fixed;
+        background:{color:Sidebar Background Color}
+        overflow: hidden;
+        
+        align-items: center;
+    }
+    
+    #sidebar-background{
+        position: relative;
+        overflow: hidden;
+        
+        height:100vh; width:25vw;
+        min-width: 200px;
+        margin: 0px;
+        
+        background: {color:Sidebar Background Color};
+    }
+    
+    #background-image{
+        position: absolute;
+        margin: -15px;
+        
+        filter: grayscale(30%) contrast(0.3) brightness(80%) blur(2px);
+        -webkit-filter: grayscale(30%) contrast(0.3) brightness(80%) blur(2px);
+        
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        
+        opacity: 1;
+    }
+    
+    #sidebar-gradient {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+        background: -webkit-linear-gradient(
+            to right, white 0%, black 130%
+            );
+        background: -o-linear-gradient(
+            to right, white 0%, black 130%
+            );
+        background: -moz-linear-gradient(
+            to right, white 0%, black 130%
+            );            
+        background: linear-gradient(to right, transparent 0%, black 130%);
+        opacity: 0.5;
+    }
+    
+    #sidebar-cover{
+        position: fixed;
+        
+        top: 0;
+        left: 0;
+        
+        display: flex;
+        padding:0; margin:0;
+        height: 100%;
+        width: 25vw;
+        min-width: 200px;
+        
+        backface-visibility: none;
+    }
+    
+    #sidebar:hover #sidebar-cover {
+        opacity: 0.45;
+        background-color: black;
+    }
+    
+    #profile {
+        position: absolute;
+        
+        top: 0;
+        left: 0;
+        
+        display: flex;
+        flex-direction: column;
+        
+        padding: 10px;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        
+        color: {TitleColor};
+        font-family: {TitleFont};
+        
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .blog-title {
+        
+        letter-spacing: 8px;
+        font-family: {TitleFont}, sans-serif;
+        {block:IfTitletextfont}font-family: {text:Title text font}, 
+            sans-serif;
+        {/block:IfTitletextfont}
+    	font-size: {select:Title font size} !important;
+    	font-weight: {TitleFontWeight};
+    	
+        color: {TitleColor};
+        transition: all 0.3s ease-in-out !important;
+        transition-delay: all 0s !important;
+    }
+    
+    .blog-title a:hover{
+        color: {color:Link Hover Color};
+    }
+    
+    #profile p {
+        color: {color:Description Color};
+    }
+    
+    #sidebar:hover #profile p
+    {
+        color: {TitleColor};
+    }
+    
+    #sidebar-navigation {
+        display: flex;
+        flex: ;
+        flex-direction: column;
+        
+        padding: 10px;
+        margin: 10px;
+        
+        height: auto;
+        width: auto;
+    }
+    
+    #sidebar-navigation li, #sidebar-navigation li >*{
+        flex: ;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        margin: 5px;
+        height: 35px;
+        width: 100%;
+        background: transparent;
+        
+        transition: all ease-in-out 0.7s;
+    }
+    
+    #sidebar-navigation >* a {
+        flex: ;
+        margin: 5px;
+        padding: 10px;
+        background: transparent;
+    }
+    
+    #sidebar-navigation >* a:hover {
+        background: {color:Sidebar Link Hover Color};
+    }
+    
+    .searchblock {
+        position: relative;
+        margin: 10px;
+        bottom: 10px;
+    }
+    
+    .s-input {
+        background: rgba(0,0,0,0.3);
+        color: {color:Description Color};
+        font-family: {font:Post Font};
+        text-align: right;
+        
+        padding: 5px;
+        margin: 10px;
+        width: 10vw;
+        min-width: 60px;
+        
+        border-radius: 2px;
+
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+    }
+    
+    .s-button {
+        margin: 0px;
+        padding: 5px;
+        background: transparent;
+        color: {color:Link Color};
+        border: none;
+        font-family: {font:Post Font};
+    }
+    
+    input[type=text]:focus {
+        outline: none;
+        font: {font:Post Font};
+    }
+    
+    .s-button:hover {
+        background:black;
+        color: {color:Link Hover Color};
+        cursor: pointer;
+    }
+
+    /* end sidebar formatting */
+    
+    /* general post formatting */
+    #post-panel {
+        flex: 1 1 auto;
+        overflow: auto;
+          
+        display: block;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #posts {
+        padding: 10px;
+        margin: 20px 30px 30px 20px;
+        width: 40%;
+    }
+    
+    
+    .post {
+        flex: ;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        
+        display: block;
+        display: flex;
+
+        position: relative;
+        
+        padding: 0px;
+        margin: 20px 10px 10px 20px;
+        background: {color:Post Hover Color};
+        height: auto; width: 100%;
+    }
+    
+    .post-cover {
+        flex: ;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        display: block;
+        display: flex;
+        
+        position: absolute;
+        
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        
+        padding: 0;
+        margin: 0;
+        height: 100%; width: 100%;
+        opacity: 0;
+        
+        z-index: 9999;
+        
+        transition: all 0.3s ease-in-out !important;
+    }
+    
+    .post-cover:hover {
+        opacity: 1;
+    }
+    
+    .post-cover li {
+        display: flex;
+        self-align: center
+    }
+    
+    .cover-button {
+        flex: ;
+        display: block;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        self-justify: center;
+        
+        margin: 5px; padding: 5px;
+        height: 30px;
+        min-width: 30px;
+        color: white;
+        font-family: {font:Post Font};
+    }
+    
+    .cover-button a {
+        padding: 5px;
+        transition: all 0.3s ease-in-out !important;
+        transition-delay: all 0s !important;
+    }
+    
+    .cover-button:hover{
+        background: black;
+    }
+    
+    .cover-button:hover >* {
+        color: {color:Link Hover Color};
+    }
+    
+    svg.like-over, .like_button {
+        display: flex;
+        width: 100%; height:100%;
+        padding:4px;
+        position: absolute;
+    }
+    
+    svg.like-over{
+        z-index:9990;
+    }
+    
+    .like_button{
+        z-index:9999;
+        opacity: 0;
+    }
+    
+    /* permalink-specific formatting*/
+    .permalink-navbar-container {
+        position: absolute;
+        top: 0;
+        width: 80vw; height: 20vh;
+        min-height: 150px;
+        margin: 0; padding: 0;
+        background-color: transparent;
+        
+        flex: ;
+        flex-direction: column;
+        align-items: center;
+        justify-content; center;
+        
+        display: block;
+        display: flex;
+        
+        list-style-type: none;
+        
+    }
+    
+    .permalink-navbar-background {
+        position: absolute;
+        top: 0;
+        width: 100vw; height: 20vh;
+        min-height: 150px;
+        margin: 0; padding: 0;
+        
+        background: black;
+        opacity: 0.5;
+        
+        z-index: 9998;
+        
+        transition: all 0.3s ease-in-out !important;
+        transition-delay: all 0s !important;
+    }
+    
+    .permalink-navbar-container >* {
+        flex: ;
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        self-align: center;
+        self-justify: center;
+        z-index: 9999;
+    }
+    
+    .permalink-navbar-container ul {
+        text-align: center;
+
+        width: 100vw; margin: 0px;padding: 0px;
+ 
+        opacity: 1!important;
+    }
+    
+    .permalink-navbar-container li {
+        flex: ;
+        display: flex;
+        display: inline-block;
+        flex-direction: row;
+        
+        self-align: center;
+    }
+    
+    .button-bg {
+        background: {color:Post Background Color};
+    }
+
+    .permalink-headerimage {
+        width: 100vw; height: 65vh;
+        object-fit: cover;
+        left: 0;
+        top: 0;
+        margin: 0px; padding: 0px;
+        z-index: 0;
+    }
+    
+    .permalink-controls{
+        flex: ;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        display: block;
+        display: flex;
+        
+        padding: 10px;
+        margin: 0px;
+        
+        height: 50px; width: 100%;
+        
+        background: {color:Post Background color};
+
+    }
+    
+    .post-content-container {
+        flex: ;
+        display: flex;
+        flex-wrap: wrap;
+
+        margin: 0px; padding: 0;
+        background: {color:Post Background Color};
+        z-index:9990;
+        
+        width: 100%; height: 100%;
+    }
+    
+    .post-content-container li {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%; height: 100%;
+    }
+    
+    .post:hover .post-content-container{
+        opacity: 0.3;
+    }
+    
+    .post.permalink-post:hover .post-content-container,
+    .post.tag-post:hover .post-content-container {
+        opacity: 1;
+    }
+    
+    .post.permalink-post{
+        flex: ;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        
+        display: block;
+        display: flex;
+
+        /*position: absolute;*/
+        top: 50px !important;
+        bottom: 50px !important;
+        
+        height: auto; width: 100%;
+        margin: 30px;
+        padding: 20px;
+
+        background: {color:Post Background Color};
+    }
+    
+    .post.permalink-post >* {
+        top: 50px;
+        bottom: 50px;
+    }
+    .post.permalink-post:hover .post-content-container, .post.permalink-post:hover .post-content-container>*, .post.permalink-post:hover .post-content-container li>*, {
+        opacity: 1!important;
+    }
+    
+    .permalink-content{
+        flex: ;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        display: flex;
+        display: block;
+        margin: 20px; padding: 40px;
+        max-width:800px;
+    }
+    
+    .tag-controls {
+        flex: ;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+        display: -webkit-flex;
+        -webkit-flex-wrap: wrap; 
+        
+        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        
+        padding: 10px;
+        margin: 0px;
+        
+        height: auto; width: 100%;
+        background: {color:Post Background Color};
+    }
+    
+    .tag-controls li, .permalink-controls li {
+        width: auto;
+    }
+    
+    /* end permalink-specific formatting */
+    /* end general post formatting */
+    
+    .textpost-container {
+        /* to keep content away from edges */
+        padding: 20px;
+    }
+    
+    /* photo post stuff*/
+    /* credit to @ShyThemes for lightbox code */
+    
+    .vignette, #vignette {
+        opacity:0;
+    }
+    
+    .lightbox-image, #tumblr_lightbox img {
+        border-radius:0 !important;
+        max-width:none;
+    }
+
+    .tmblr-lightbox, #tumblr_lightbox {
+        background-color:rgba(0,0,0,.8) !important;
+    }
+    
+    .post-photo {
+        width: 100%;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 10px;
+    }
+    
+    a.lightbox-link {
+        top: 0;
+        margin: 0px;
+        width: 0px;
+        height: 0px;
+    }
+    /* end photo post stuff */
+    
+    /* quote post */
+    
+    .quote {
+        text-align: right;
+        font-family: {font:Post Font};
+    }
+    
+    /* answer post */
+    .answerpost {
+        flex: ;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .asker-block {
+        margin-top: 10px;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 10px;
+        
+        padding: 5px;
+        width: auto;
+        
+        border-radius: 3px;
+        
+        background: rgba(0,0,0,0.2);
+    }
+    
+    /* homepage pagination formatting */
+    .pagination {
+        width: 100%; height: 100%;
+        display: block;
+        background: {color:Background Color};
+        margin: 0px; padding: 0px;
+        
+        text-align: center;
+    }
+    
+    .pagination .cover-button >* {
+        color: {color:Pagination Font Color};
+    }
+    
+    .pagination li {
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .cover-button.inactive:hover, 
+    .cover-button.inactive >*,
+    li.cover-button.inactive {
+        background: transparent;
+        color: {color:Post Font Color};
+        
+        width: 30px;
+        margin: 5px;
+        
+        cursor: default;
+    }
+    
+    /* footer formatting */
+    #foot-panel {
+        
+        width: 100%; height: 100%;
+        background: {color:Background Color};
+
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    #foot-text{ 
+                transform: scale(0.6);
+        -webkit-transform: scale(0.6);
+        
+        font-family: {font: Post Font};
+        color: {color:Post Background Color};
+    }
+
+    </style>
+</head>
+    
+<body>
+<!-- if want normal like button but different color or smth -->
+<!--<svg class="like-over svg-graphic" width="20" height="20"
+            viewbox="-5 -5 30 30">
+                <clipPath id="like-clip">
+                </clipPath>
+                <a xlink:href="#">
+                    <image clip-path="url(#like-clip)" 
+                    height="100%" width="100%" 
+                    xlink:href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzoyj81uFNvqc0iAsKhBEHfBQHnC66KPn6qSM-PmhxMoD1JY-q">
+                </a>
+            </svg>-->
+
+<div id="main">
+    {block:HomePage}
+    <div id="sidebar">
+        <div id="sidebar-background">
+            <img id="background-image" src="{image:Sidebar Background Image}">
+            <div id="sidebar-gradient"></div>
+        </div>
+        <div id="sidebar-cover"></div>
+        <div id="profile">
+            {block:ShowAvatar} 
+            <svg class="svg-graphic" width="96" height="96"
+            viewbox="0 0 96 96">
+                <clipPath id="avatar-clip">
+                    <circle cx="48" cy="48" r="45" />
+                </clipPath>
+                <a class="avatar" xlink:href="#">
+                    <image clip-path="url(#avatar-clip)" 
+                    height="100%" width="100%" 
+                    xlink:href="{PortraitURL-96}">
+                </a>
+            </svg>
+            {/block:ShowAvatar}
+            <h1><a href="{BlogURL}" class="blog-title">{title}</a></h1>
+            <p>{description}</p>
+            <hr>
+            <ul id="sidebar-navigation">
+                <li>
+                <form onsubmit="return handleThis(this)">
+                <div class="submit">
+                <input type="submit" value="?" name="Submit" class="s-button"/>
+                </div>
+                <div class="input">
+                <input class="s-input" onfocus="this.value=''" onblur="if(this.value=='') this.value='search';" type="text" value="{lang:Search}" name="number"/>
+                </div>
+                </form>
+                </li>
+                {block:AskEnabled}
+                <li><a href="/ask">{AskLabel}</a></li>
+                {/block:AskEnabled} 
+                {block:SubmissionsEnabled}
+                <li><a href="/submit">{SubmitLabel}</a></li>
+                {/block:SubmissionsEnabled}
+                {block:HasPages}
+                {block:Pages}
+                <li><a href="{URL}">{Label}</a></li>
+                {/block:Pages}
+                {/block:HasPages}
+            </ul>
+        </div>
+    </div>
+    {block:HomePage}
+    
+    
+<div id="post-panel">
+    {block:PermalinkPage}
+    <img class="permalink-headerimage" src="{HeaderImage}">
+    <div class="permalink-navbar-background"></div>
+    <div class="permalink-navbar-container">
+        <h1><a href="{BlogURL}" class="blog-title">{title}</a></h1>
+       <ul>
+        <li class="cover-button button-bg"><a href="{BlogURL}" alt="home">⌂</a></li>
+        {block:AskEnabled}
+            <li class="cover-button button-bg"><a href="/ask" alt="ask">✉</a></li>
+        {/block:AskEnabled}
+        {block:SubmissionsEnabled}
+            <li class="cover-button button-bg"><a href="/submit"><!--✑ ✐-->⬨</a></li>
+        {/block:SubmissionsEnabled}
+        {block:HasPages}
+        {block:Pages}
+            <li class="cover-button button-bg"><a href="{URL}">{Label}</a></li>
+        {/block:Pages}
+        {/block:HasPages}
+            <li>
+                <form onsubmit="return handleThis(this)">
+                <div class="input">
+                <input class="s-input" onfocus="this.value=''" onblur="if(this.value=='') this.value='search';" type="text" value="{lang:Search}" name="number"/>
+                </div>
+                </form>
+            </li>
+    </ul>
+    </div>
+    {/block:PermalinkPage}
+    
+    {block:TagPage}
+    <img class="permalink-headerimage" src="{HeaderImage}">
+    <div class="permalink-navbar-background"></div>
+    <div class="permalink-navbar-container">
+        <h1><a href="{BlogURL}" class="blog-title">{title}</a></h1>
+        <h3><a href="{TagURL}" style="color:{TitleColor}; font:{font:Post Font};">#{Tag}</a></h3>
+       <ul>
+        <li class="cover-button button-bg"><a href="{BlogURL}" alt="home">⌂</a></li>
+        {block:AskEnabled}
+            <li class="cover-button button-bg"><a href="/ask" alt="ask">✉</a></li>
+        {/block:AskEnabled}
+        {block:SubmissionsEnabled}
+            <li class="cover-button button-bg"><a href="/submit"><!--✑ ✐-->⬨</a></li>
+        {/block:SubmissionsEnabled}
+        {block:HasPages}
+        {block:Pages}
+            <li class="cover-button button-bg"><a href="{URL}">{Label}</a></li>
+        {/block:Pages}
+        {/block:HasPages}
+            <li>
+                <form onsubmit="return handleThis(this)">
+                <div class="input">
+                <input class="s-input" onfocus="this.value=''" onblur="if(this.value=='') this.value='search';" type="text" value="{lang:Search}" name="number"/>
+                </div>
+                </form>
+            </li>
+    </ul>
+    </div>
+    {/block:TagPage}
+    
+    <div id="posts"
+    {block:HomePage}
+    style="
+        position: absolute;
+        right: 10vw;
+        width: 55vw;
+        margin: 0px;
+        padding: 0px;
+        "
+    {/block:HomePage}
+    >
+
+{block:Posts}
+
+    
+    {block:Text}
+        <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button">
+                <a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container textpost-container">
+            <li>
+                {block:Title}
+                <li>
+                    <h2>{title}</h2>
+                </li>
+                {/block:Title}
+                <li>
+                    <p>{body}</p>
+                </li>
+            </li>
+
+            {block:PermalinkPage}
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPost}
+                <li class="cover-button>">
+                    <a href="{PreviousPost}">⧼</a></li>               
+                {/block:PreviousPost}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPost}
+                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
+                {/block:NextPost}
+            </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>
+            {/block:HasTags}
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:TagPage}
+
+        </ul>
+        </div>
+    {/block:Text}
+    
+    {block:Photo}        
+        <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button"><a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container">
+            <li>
+            <a class="lightbox-link"
+            href="#" onclick="Tumblr.Lightbox.init([{ 
+                width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, 
+                low_res: '{PhotoURL-500}', high_res: '{PhotoURL-HighRes}' }]); 
+                $('body').toggleClass('tumblr_lightbox_active'); return false">
+                <img class="post-photo" src="{PhotoURL-HighRes}">
+            </a>
+            </li>
+            {block:PermalinkPage}
+            <li><p>{caption}</p></li>
+
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPage}
+                <li class="cover-button>">
+                    <a href="{PreviousPage}">↢</a></li>               
+                {/block:PreviousPage}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPage}
+                <li class="cover-button"><a href="{NextPage}">↣</a><li>
+                {/block:NextPage}
+            </ul>
+            </li>
+            
+            {block:HasTags}
+            <li>
+            <ul class="tag-controls">
+            {block:Tags}
+                <li class="cover-button">
+                    <a href="{TagURL}">#{Tag}</a>
+                </li>
+            {/block:Tags}
+            </ul>
+            </li>
+            {/block:HasTags}
+            
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>      
+            </li>
+            {block:HasTags}
+            <li>
+            <ul class="tag-controls">
+                {block:Tags}
+                <li class="cover-button">
+                    <a href="{TagURL}">#{Tag}</a>
+                </li>
+                {/block:Tags}
+            </ul>
+            </li>
+            {/block:HasTags}
+            {/block:TagPage}
+        </ul>
+        </div>
+    {/block:Photo}
+    
+    {block:Photoset}
+        <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button"><a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container">
+            <li>
+                <a class="lighbox-link" 
+            href="#" onclick="Tumblr.Lightbox.init([/*{block:Photos}, /**/ 
+                { width: {PhotoWidth-HighRes}, height: {PhotoHeight-HighRes}, 
+                low_res: '{PhotoURL-500}', high_res: '{PhotoURL-HighRes}' }
+                {/block:Photos}]); 
+                $('body').toggleClass('tumblr_lightbox_active'); return false">
+                {block:Photos}<img class="post-photo" src="{PhotoURL-HighRes}">
+                <!--{/block:Photos}-->
+            </a>
+            </li>
+            {block:PermalinkPage}
+            <li><p>{caption}</p></li>
+
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPage}
+                <li class="cover-button>">
+                    <a href="{PreviousPage}">↢</a></li>               
+                {/block:PreviousPage}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPage}
+                <li class="cover-button"><a href="{NextPage}">↣</a><li>
+                {/block:NextPage}
+            </ul>
+            </li>
+            
+            {block:HasTags}
+            <li>
+            <ul class="tag-controls">
+            {block:Tags}
+                <li class="cover-button">
+                    <a href="{TagURL}">#{Tag}</a>
+                </li>
+            {/block:Tags}
+            </ul>
+            </li>
+            {/block:HasTags}
+            
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>      
+            </li>
+            {block:HasTags}
+            <li>
+            <ul class="tag-controls">
+                {block:Tags}
+                <li class="cover-button">
+                    <a href="{TagURL}">#{Tag}</a>
+                </li>
+                {/block:Tags}
+            </ul>
+            </li>
+            {/block:HasTags}
+            {/block:TagPage}
+        </ul>
+        </div>
+    {/block:Photoset}
+    
+    {block:Quote}
+     <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button">
+                <a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container textpost-container">
+                <li>
+                <h2 class="quote">"{Quote}"</h2>
+                </li>
+                {block:Source}
+                <li><p>{Source}</p></li>
+                {/block:Source}
+            </li>
+
+            {block:PermalinkPage}
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPost}
+                <li class="cover-button>">
+                    <a href="{PreviousPost}">⧼</a></li>               
+                {/block:PreviousPost}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPost}
+                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
+                {/block:NextPost}
+            </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>
+            {/block:HasTags}
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:TagPage}
+
+        </ul>
+        </div>
+    {/block:Quote}
+    
+    {block:Link}
+    <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button">
+                <a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container textpost-container">
+            <li>
+                {block:Thumbnail} 
+                    <img src="{Thumbnail-HighRes}" class="post-photo">
+                {/block:Thumbnail}
+                {block:Description} 
+                    {Description}
+                {/block:Description}
+                {block:Excerpt} 
+                    <p style="text-align:right;">{Excerpt}</p>
+                {/block:Excerpt}
+                {block:Author}
+                    <p style="text-align:left;">({Author})</p>
+                {/block:Author}
+            </li>
+
+            {block:PermalinkPage}
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPost}
+                <li class="cover-button>">
+                    <a href="{PreviousPost}">⧼</a></li>               
+                {/block:PreviousPost}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPost}
+                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
+                {/block:NextPost}
+            </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>
+            {/block:HasTags}
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:TagPage}
+
+        </ul>
+        </div>
+    {/block:Link}
+    
+    {block:Chat}
+    <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button">
+                <a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container">
+            <li>
+                {block:Title}
+                <li>
+                    <h2>{title}</h2>
+                </li>
+                {/block:Title}
+                {block:Lines}
+                <li>
+                    <p>
+                    {block:Label}<b>{Label}</b>{/block:Label}
+                    <i>{Line}</i></p>
+                </li>
+                {/block:Lines}
+            </li>
+
+            {block:PermalinkPage}
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPost}
+                <li class="cover-button>">
+                    <a href="{PreviousPost}">⧼</a></li>               
+                {/block:PreviousPost}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPost}
+                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
+                {/block:NextPost}
+            </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>
+            {/block:HasTags}
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:TagPage}
+
+        </ul>
+        </div>
+    {/block:Chat}
+    
+    {block:Answer}
+    <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
+            {block:HomePage}
+            <ul class="post-cover">
+            <li class="cover-button">
+                <a href="{permalink}">permalink</a></li>
+            <li class="cover-button">{LikeButton color="white" size="30"}
+                <a href="#">❥</a>
+            </li>
+            <li class="cover-button">
+                <a href="{ReblogURL}">↻</a>
+            </li>
+        </ul>
+            {/block:HomePage}
+            <ul class="post-content-container textpost-container">
+            <li class="asker-block">
+                <p>{Asker}:</p>
+                <p>{Question}</p>
+            </li>
+            {block:Answerer}
+            <li>
+                <p>{Answerer}
+                <p>{Answer}</p></p>
+            </li>
+            {/block:Answerer}
+            <li>
+                <p>{Replies}</p>
+            </li>
+
+
+            {block:PermalinkPage}
+            <li>
+            <ul class="permalink-controls">
+                {block:PreviousPost}
+                <li class="cover-button>">
+                    <a href="{PreviousPost}">⧼</a></li>               
+                {/block:PreviousPost}    
+                <li class="cover-button"><a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    
+                    <a href="#">❥</a>
+                </li>
+                <li class="cover-button">
+                    <a href="{ReblogURL}">↻</a>
+                </li>
+                {block:NextPost}
+                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
+                {/block:NextPost}
+            </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>
+            {/block:HasTags}
+            {/block:PermalinkPage}
+            
+            {block:TagPage}
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="30"}
+                    <a href="#">❥</a>
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:TagPage}
+
+        </ul>
+        </div>
+    {/block:Answer}
+
+    {/block:Posts}
+
+    {block:Pagination}
+    <div class="post">
+    <ul class="pagination">
+    {block:PreviousPage}
+        <li class="cover-button">
+            <a href="{PreviousPage}">⧼</a>
+        </li>
+    {/block:PreviousPage}
+    {block:JumpPagination length="5"}
+    {block:CurrentPage}
+        <li class="cover-button inactive">
+        {PageNumber}
+        </li>
+    {/block:CurrentPage}
+    {block:JumpPage}
+        <li class="cover-button">
+            <a class="jump_page" href="{URL}">{PageNumber}</a>
+        </li>
+    {/block:JumpPage}
+    {/block:JumpPagination}
+    
+    {block:HomePage}
+        <li class="cover-button inactive">
+            ...
+        </li>
+        <li class="cover-button">
+            <a href="/page/{TotalPages}">{TotalPages}</a>
+        </li>
+    {/block:HomePage}
+    
+    {block:NextPage}
+        <li class="cover-button">
+            <a href="{NextPage}">⧽</a>
+        </li>
+    {/block:NextPage}
+    </ul>
+    </div>
+    {/block:Pagination}
+    
+    {block:HomePage}
+    <div class="post">
+    <div id="foot-panel">
+        <div id="foot-text">
+            <h3><a href="{BlogURL}"
+                style="color: {color:Post Background Color};">
+                {title}</a> © {CopyrightYears}</h3>
+        </div>
+    </div>
+    </div>
+    {/block:HomePage}
+
+    </div>
+    
+    
+
+    </div>
+        
+</div>
+
+    
+</body>
+</html>
