@@ -16,7 +16,7 @@
 <!--
 function handleThis(formElm)
 {
-window.location="/tagged/"+formElm.number.value+"";
+window.location="/search/"+formElm.number.value+"";
 return false;
 }
 -->
@@ -42,9 +42,15 @@ return false;
     
     <meta name="color:Permalink Navbar Background" content="#FF9680">
     
+    <!-- to keep tumblr default controls on top -->
+
     <style>
     *, *:hover {
         transition: all 0.7s ease-in-out;
+        -webkit-transition: all 0.7s ease-in-out;
+        -moz-transition: all 0.7s ease-in-out;
+        -o-transition: all 0.7s ease-in-out;
+        
         box-sizing: border-box;
         
         font-family: {TitleFont}, sans-serif;
@@ -75,6 +81,9 @@ return false;
     
     h1 >* {
         transition: all 0.3s ease-in-out!important;
+        -webkit-transition: all 0.3s ease-in-out!important;
+        -moz-transition: all 0.3s ease-in-out!important;
+        -o-transition: all 0.3s ease-in-out!important;
     }
     
     @media screen and (max-width: 600px) {
@@ -145,7 +154,11 @@ return false;
     #main { 
         height: 100vh; width: 100vw;
         display: block;
+        
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         
         overflow: auto;
         background: {color:Background Color};
@@ -157,10 +170,12 @@ return false;
     
     /* fixed sidebar formatting */
     #sidebar {
-        flex: ;
-        height:100vh; width:25vw;
+        height:120vh; width:25vw;
         min-width: 200px;
-        margin: 0px;
+        margin-top: -50px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
         position: fixed;
         background:{color:Sidebar Background Color}
         overflow: hidden;
@@ -172,9 +187,12 @@ return false;
         position: relative;
         overflow: hidden;
         
-        height:100vh; width:25vw;
+        height:120vh; width: 25vw;
         min-width: 200px;
-        margin: 0px;
+        margin-top: -50px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
         
         background: {color:Sidebar Background Color};
     }
@@ -222,6 +240,10 @@ return false;
         left: 0;
         
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
+        
         padding:0; margin:0;
         height: 100%;
         width: 25vw;
@@ -242,6 +264,10 @@ return false;
         left: 0;
         
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
+        
         flex-direction: column;
         
         padding: 10px;
@@ -267,7 +293,11 @@ return false;
     	font-weight: {TitleFontWeight};
     	
         color: {TitleColor};
-        transition: all 0.3s ease-in-out !important;
+
+        transition: all 0.3s ease-in-out!important;
+        -webkit-transition: all 0.3s ease-in-out!important;
+        -moz-transition: all 0.3s ease-in-out!important;
+        -o-transition: all 0.3s ease-in-out!important;
         transition-delay: all 0s !important;
     }
     
@@ -286,6 +316,10 @@ return false;
     
     #sidebar-navigation {
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
+        
         flex: ;
         flex-direction: column;
         
@@ -299,6 +333,9 @@ return false;
     #sidebar-navigation li, #sidebar-navigation li >*{
         flex: ;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -308,7 +345,11 @@ return false;
         width: 100%;
         background: transparent;
         
-        transition: all ease-in-out 0.7s;
+
+        transition: all 0.7s ease-in-out!important;
+        -webkit-transition: all 0.7s ease-in-out!important;
+        -moz-transition: all 0.7s ease-in-out!important;
+        -o-transition: all 0.7s ease-in-out!important;
     }
     
     #sidebar-navigation >* a {
@@ -379,6 +420,10 @@ return false;
         display: block;
 
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
+        
         flex-direction: column;
         align-items: center;
     }
@@ -399,6 +444,9 @@ return false;
         
         display: block;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
 
         position: relative;
         
@@ -416,6 +464,9 @@ return false;
         
         display: block;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         
         position: absolute;
         
@@ -429,9 +480,13 @@ return false;
         height: 100%; width: 100%;
         opacity: 0;
         
-        z-index: 9999;
+        z-index: 15;
         
-        transition: all 0.3s ease-in-out !important;
+
+        transition: all 0.3s ease-in-out!important;
+        -webkit-transition: all 0.3s ease-in-out!important;
+        -moz-transition: all 0.3s ease-in-out!important;
+        -o-transition: all 0.3s ease-in-out!important;
     }
     
     .post-cover:hover {
@@ -447,6 +502,9 @@ return false;
         flex: ;
         display: block;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         position: relative;
         flex-direction: row;
         align-items: center;
@@ -463,7 +521,10 @@ return false;
     
     .cover-button a {
         padding: 5px;
-        transition: all 0.3s ease-in-out !important;
+        transition: all 0.3s ease-in-out!important;
+        -webkit-transition: all 0.3s ease-in-out!important;
+        -moz-transition: all 0.3s ease-in-out!important;
+        -o-transition: all 0.3s ease-in-out!important;
         transition-delay: all 0s !important;
     }
     
@@ -475,29 +536,14 @@ return false;
         color: {color:Link Hover Color};
     }
     
-    svg.like-over, .like_button {
-        display: flex;
-        width: 100%; height:100%;
-        padding:4px;
-        position: absolute;
-    }
-    
-    svg.like-over{
-        z-index:9990;
-    }
-    
-    .like_button{
-        z-index:9999;
-        opacity: 0;
-    }
-    
     /* permalink-specific formatting*/
     .permalink-navbar-container {
         position: absolute;
         top: 0;
         width: 80vw; height: 20vh;
         min-height: 150px;
-        margin: 0; padding: 0;
+        margin: 0;
+        padding: 0;
         background-color: transparent;
         
         flex: ;
@@ -507,6 +553,9 @@ return false;
         
         display: block;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         
         list-style-type: none;
         
@@ -517,14 +566,20 @@ return false;
         top: 0;
         width: 100vw; height: 20vh;
         min-height: 150px;
-        margin: 0; padding: 0;
+        margin-top: -50px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px; padding: 0;
         
         background: black;
         opacity: 0.5;
         
-        z-index: 9998;
+        z-index: 30;
         
-        transition: all 0.3s ease-in-out !important;
+        transition: all 0.3s ease-in-out!important;
+        -webkit-transition: all 0.3s ease-in-out!important;
+        -moz-transition: all 0.3s ease-in-out!important;
+        -o-transition: all 0.3s ease-in-out!important;
         transition-delay: all 0s !important;
     }
     
@@ -536,7 +591,7 @@ return false;
         justify-content: center;
         self-align: center;
         self-justify: center;
-        z-index: 9999;
+        z-index: 35;
     }
     
     .permalink-navbar-container ul {
@@ -561,11 +616,15 @@ return false;
     }
 
     .permalink-headerimage {
-        width: 100vw; height: 65vh;
+        position: absolute;
+        width: 110vw; height: 50vh;
         object-fit: cover;
         left: 0;
         top: 0;
-        margin: 0px; padding: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px; padding: 0px;
         z-index: 0;
     }
     
@@ -577,6 +636,9 @@ return false;
         
         display: block;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         
         padding: 10px;
         margin: 0px;
@@ -594,7 +656,7 @@ return false;
 
         margin: 0px; padding: 0;
         background: {color:Post Background Color};
-        z-index:9990;
+        z-index: 10;
         
         width: 100%; height: 100%;
     }
@@ -625,6 +687,9 @@ return false;
         
         display: block;
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
 
         /*position: absolute;*/
         top: 50px !important;
@@ -652,6 +717,9 @@ return false;
         justify-content: center;
         
         display: flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: -moz-flex;
         display: block;
         margin: 20px; padding: 40px;
         max-width:800px;
@@ -663,12 +731,16 @@ return false;
         align-items: center;
         justify-content: center;
         
-        display: -webkit-flex;
-        -webkit-flex-wrap: wrap; 
-        
         display: block;
+        
         display: flex;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
         flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -moz-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
         
         padding: 10px;
         margin: 0px;
@@ -793,6 +865,7 @@ return false;
     #foot-text{ 
                 transform: scale(0.6);
         -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
         
         font-family: {font: Post Font};
         color: {color:Post Background Color};
@@ -802,17 +875,6 @@ return false;
 </head>
     
 <body>
-<!-- if want normal like button but different color or smth -->
-<!--<svg class="like-over svg-graphic" width="20" height="20"
-            viewbox="-5 -5 30 30">
-                <clipPath id="like-clip">
-                </clipPath>
-                <a xlink:href="#">
-                    <image clip-path="url(#like-clip)" 
-                    height="100%" width="100%" 
-                    xlink:href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzoyj81uFNvqc0iAsKhBEHfBQHnC66KPn6qSM-PmhxMoD1JY-q">
-                </a>
-            </svg>-->
 
 <div id="main">
     {block:HomePage}
@@ -861,6 +923,7 @@ return false;
                 <li><a href="{URL}">{Label}</a></li>
                 {/block:Pages}
                 {/block:HasPages}
+                <li>{likebutton color="white" size="30"}</li>
             </ul>
         </div>
     </div>
@@ -937,19 +1000,21 @@ return false;
         padding: 0px;
         "
     {/block:HomePage}
+    {block:PermalinkPage}
+    style="
+    margin: 50vh 30px 30px 20px;"
+    {/block:PermalinkPage}
     >
 
 {block:Posts}
 
-    
     {block:Text}
         <div class="post {block:PermalinkPage}permalink-post{/block:PermalinkPage} {block:TagPage}tag-post{/block:TagPage}">
             {block:HomePage}
             <ul class="post-cover">
             <li class="cover-button">
                 <a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -971,21 +1036,13 @@ return false;
             {block:PermalinkPage}
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPost}
-                <li class="cover-button>">
-                    <a href="{PreviousPost}">⧼</a></li>               
-                {/block:PreviousPost}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPost}
-                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
-                {/block:NextPost}
             </ul>
             </li>
             {block:HasTags}
@@ -1001,13 +1058,38 @@ return false;
             {/block:HasTags}
             {/block:PermalinkPage}
             
+            {block:SearchPage}
+            
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
+            
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
@@ -1036,8 +1118,7 @@ return false;
             {block:HomePage}
             <ul class="post-cover">
             <li class="cover-button"><a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -1056,48 +1137,62 @@ return false;
             </li>
             {block:PermalinkPage}
             <li><p>{caption}</p></li>
-
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPage}
-                <li class="cover-button>">
-                    <a href="{PreviousPage}">↢</a></li>               
-                {/block:PreviousPage}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPage}
-                <li class="cover-button"><a href="{NextPage}">↣</a><li>
-                {/block:NextPage}
             </ul>
             </li>
-            
             {block:HasTags}
             <li>
-            <ul class="tag-controls">
-            {block:Tags}
-                <li class="cover-button">
-                    <a href="{TagURL}">#{Tag}</a>
-                </li>
-            {/block:Tags}
-            </ul>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
             </li>
             {/block:HasTags}
-            
             {/block:PermalinkPage}
+            
+            {block:SearchPage}
+            
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
             
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
@@ -1125,9 +1220,7 @@ return false;
             {block:HomePage}
             <ul class="post-cover">
             <li class="cover-button"><a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -1146,50 +1239,64 @@ return false;
                 <!--{/block:Photos}-->
             </a>
             </li>
-            {block:PermalinkPage}
+             {block:PermalinkPage}
             <li><p>{caption}</p></li>
-
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPage}
-                <li class="cover-button>">
-                    <a href="{PreviousPage}">↢</a></li>               
-                {/block:PreviousPage}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPage}
-                <li class="cover-button"><a href="{NextPage}">↣</a><li>
-                {/block:NextPage}
             </ul>
             </li>
-            
             {block:HasTags}
             <li>
-            <ul class="tag-controls">
-            {block:Tags}
-                <li class="cover-button">
-                    <a href="{TagURL}">#{Tag}</a>
-                </li>
-            {/block:Tags}
-            </ul>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
             </li>
             {/block:HasTags}
-            
             {/block:PermalinkPage}
+                    
+            {block:SearchPage}
+            
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
             
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
@@ -1218,8 +1325,7 @@ return false;
             <ul class="post-cover">
             <li class="cover-button">
                 <a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -1235,24 +1341,16 @@ return false;
                 {/block:Source}
             </li>
 
-            {block:PermalinkPage}
+        {block:PermalinkPage}
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPost}
-                <li class="cover-button>">
-                    <a href="{PreviousPost}">⧼</a></li>               
-                {/block:PreviousPost}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPost}
-                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
-                {/block:NextPost}
             </ul>
             </li>
             {block:HasTags}
@@ -1266,15 +1364,41 @@ return false;
                 </ul>
             </li>
             {/block:HasTags}
-            {/block:PermalinkPage}
+            {/block:PermalinkPage}  
+            
+            
+                        {block:SearchPage}
+            
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
             
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
@@ -1304,8 +1428,7 @@ return false;
             <ul class="post-cover">
             <li class="cover-button">
                 <a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -1331,21 +1454,13 @@ return false;
             {block:PermalinkPage}
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPost}
-                <li class="cover-button>">
-                    <a href="{PreviousPost}">⧼</a></li>               
-                {/block:PreviousPost}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPost}
-                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
-                {/block:NextPost}
             </ul>
             </li>
             {block:HasTags}
@@ -1360,14 +1475,37 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
+                        {block:SearchPage}
             
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
@@ -1397,8 +1535,7 @@ return false;
             <ul class="post-cover">
             <li class="cover-button">
                 <a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -1420,25 +1557,17 @@ return false;
                 </li>
                 {/block:Lines}
             </li>
-
+            
             {block:PermalinkPage}
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPost}
-                <li class="cover-button>">
-                    <a href="{PreviousPost}">⧼</a></li>               
-                {/block:PreviousPost}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPost}
-                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
-                {/block:NextPost}
             </ul>
             </li>
             {block:HasTags}
@@ -1453,14 +1582,37 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
+                        {block:SearchPage}
             
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
@@ -1490,8 +1642,7 @@ return false;
             <ul class="post-cover">
             <li class="cover-button">
                 <a href="{permalink}">permalink</a></li>
-            <li class="cover-button">{LikeButton color="white" size="30"}
-                <a href="#">❥</a>
+            <li class="cover-button">{LikeButton color="white" size="15"}
             </li>
             <li class="cover-button">
                 <a href="{ReblogURL}">↻</a>
@@ -1517,21 +1668,13 @@ return false;
             {block:PermalinkPage}
             <li>
             <ul class="permalink-controls">
-                {block:PreviousPost}
-                <li class="cover-button>">
-                    <a href="{PreviousPost}">⧼</a></li>               
-                {/block:PreviousPost}    
+   
                 <li class="cover-button"><a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                 <li class="cover-button">
                     <a href="{ReblogURL}">↻</a>
                 </li>
-                {block:NextPost}
-                <li class="cover-button"><a href="{NextPost}">⧽</a><li>
-                {/block:NextPost}
             </ul>
             </li>
             {block:HasTags}
@@ -1546,14 +1689,37 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
+                        {block:SearchPage}
             
+            <li>
+                <ul class="tag-controls">
+                <li class="cover-button">
+                    <a href="{permalink}">permalink</a></li>
+                <li class="cover-button">{LikeButton color="white" size="15"}
+                </li>
+               <li class="cover-button">
+                        <a href="{ReblogURL}">↻</a>
+                </li>
+                </ul>
+            </li>
+            {block:HasTags}
+            <li>
+                <ul class="tag-controls">
+                    {block:Tags}
+                    <li class="cover-button">
+                        <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                    {/block:Tags}
+                </ul>
+            </li>    
+            {/block:HasTags}
+            {/block:SearchPage}
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
                 <li class="cover-button">
                     <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="30"}
-                    <a href="#">❥</a>
+                <li class="cover-button">{LikeButton color="white" size="15"}
                 </li>
                <li class="cover-button">
                         <a href="{ReblogURL}">↻</a>
