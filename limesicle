@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<!-- 2018 Feb 23 Edit: Search goes to actual search, PC compatibility still questionable -->
+
 <html>
 <head>
      <link rel="shortcut icon" href="{Favicon}">
@@ -989,6 +992,36 @@ return false;
     </ul>
     </div>
     {/block:TagPage}
+    
+    {block:SearchPage}
+    <img class="permalink-headerimage" src="{HeaderImage}">
+    <div class="permalink-navbar-background"></div>
+    <div class="permalink-navbar-container">
+        <h1><a href="{BlogURL}" class="blog-title">{title}</a></h1>
+        <h3><a href="{TagURL}" style="color:{TitleColor}; font:{font:Post Font};">#{Tag}</a></h3>
+       <ul>
+        <li class="cover-button button-bg"><a href="{BlogURL}" alt="home">⌂</a></li>
+        {block:AskEnabled}
+            <li class="cover-button button-bg"><a href="/ask" alt="ask">✉</a></li>
+        {/block:AskEnabled}
+        {block:SubmissionsEnabled}
+            <li class="cover-button button-bg"><a href="/submit"><!--✑ ✐-->⬨</a></li>
+        {/block:SubmissionsEnabled}
+        {block:HasPages}
+        {block:Pages}
+            <li class="cover-button button-bg"><a href="{URL}">{Label}</a></li>
+        {/block:Pages}
+        {/block:HasPages}
+            <li>
+                <form onsubmit="return handleThis(this)">
+                <div class="input">
+                <input class="s-input" onfocus="this.value=''" onblur="if(this.value=='') this.value='search';" type="text" value="{lang:Search}" name="number"/>
+                </div>
+                </form>
+            </li>
+    </ul>
+    </div>
+    {/block:SearchPage} 
     
     <div id="posts"
     {block:HomePage}
