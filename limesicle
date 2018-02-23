@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<!-- 2018 Feb 23 Edit: Search goes to actual search, PC compatibility still questionable -->
-
+<!-- compatability with PC questionable -->
 <html>
 <head>
      <link rel="shortcut icon" href="{Favicon}">
@@ -19,7 +18,7 @@
 <!--
 function handleThis(formElm)
 {
-window.location="/search/"+formElm.number.value+"";
+window.location="/tagged/"+formElm.number.value+"";
 return false;
 }
 -->
@@ -433,7 +432,7 @@ return false;
     
     #posts {
         padding: 10px;
-        margin: 20px 30px 30px 20px;
+        margin: 50vh 30px 30px 20px;
         width: 40%;
     }
     
@@ -930,7 +929,7 @@ return false;
             </ul>
         </div>
     </div>
-    {block:HomePage}
+    {/block:HomePage}
     
     
 <div id="post-panel">
@@ -993,35 +992,6 @@ return false;
     </div>
     {/block:TagPage}
     
-    {block:SearchPage}
-    <img class="permalink-headerimage" src="{HeaderImage}">
-    <div class="permalink-navbar-background"></div>
-    <div class="permalink-navbar-container">
-        <h1><a href="{BlogURL}" class="blog-title">{title}</a></h1>
-        <h3><a href="{TagURL}" style="color:{TitleColor}; font:{font:Post Font};">#{Tag}</a></h3>
-       <ul>
-        <li class="cover-button button-bg"><a href="{BlogURL}" alt="home">⌂</a></li>
-        {block:AskEnabled}
-            <li class="cover-button button-bg"><a href="/ask" alt="ask">✉</a></li>
-        {/block:AskEnabled}
-        {block:SubmissionsEnabled}
-            <li class="cover-button button-bg"><a href="/submit"><!--✑ ✐-->⬨</a></li>
-        {/block:SubmissionsEnabled}
-        {block:HasPages}
-        {block:Pages}
-            <li class="cover-button button-bg"><a href="{URL}">{Label}</a></li>
-        {/block:Pages}
-        {/block:HasPages}
-            <li>
-                <form onsubmit="return handleThis(this)">
-                <div class="input">
-                <input class="s-input" onfocus="this.value=''" onblur="if(this.value=='') this.value='search';" type="text" value="{lang:Search}" name="number"/>
-                </div>
-                </form>
-            </li>
-    </ul>
-    </div>
-    {/block:SearchPage} 
     
     <div id="posts"
     {block:HomePage}
@@ -1033,10 +1003,6 @@ return false;
         padding: 0px;
         "
     {/block:HomePage}
-    {block:PermalinkPage}
-    style="
-    margin: 50vh 30px 30px 20px;"
-    {/block:PermalinkPage}
     >
 
 {block:Posts}
@@ -1090,32 +1056,7 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
-            
-            {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
+
             
             {block:TagPage}
             <li>
@@ -1193,33 +1134,7 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
-            
-            {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
-            
+
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
@@ -1298,31 +1213,6 @@ return false;
             {/block:HasTags}
             {/block:PermalinkPage}
                     
-            {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
             
             {block:TagPage}
             <li>
@@ -1398,33 +1288,7 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}  
-            
-            
-                        {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
+ 
             
             {block:TagPage}
             <li>
@@ -1508,31 +1372,7 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
-                        {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
+
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
@@ -1615,31 +1455,7 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
-                        {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
+
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
@@ -1722,31 +1538,7 @@ return false;
             </li>
             {/block:HasTags}
             {/block:PermalinkPage}
-                        {block:SearchPage}
-            
-            <li>
-                <ul class="tag-controls">
-                <li class="cover-button">
-                    <a href="{permalink}">permalink</a></li>
-                <li class="cover-button">{LikeButton color="white" size="15"}
-                </li>
-               <li class="cover-button">
-                        <a href="{ReblogURL}">↻</a>
-                </li>
-                </ul>
-            </li>
-            {block:HasTags}
-            <li>
-                <ul class="tag-controls">
-                    {block:Tags}
-                    <li class="cover-button">
-                        <a href="{TagURL}">#{Tag}</a>
-                    </li>
-                    {/block:Tags}
-                </ul>
-            </li>    
-            {/block:HasTags}
-            {/block:SearchPage}
+
             {block:TagPage}
             <li>
                 <ul class="tag-controls">
